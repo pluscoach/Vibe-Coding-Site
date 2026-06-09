@@ -142,3 +142,7 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
 captures/
+
+# 운영자 수동 백업 HTML ("index XX.html" 형식 임시 보존본은 git 외부에서 관리)
+index *.html
+
