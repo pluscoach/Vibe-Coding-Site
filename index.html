@@ -131,23 +131,27 @@
       <!-- 중앙 거대 타이포 영역 -->
       <div class="relative flex items-center justify-center min-h-screen px-4">
 
-        <!-- 위쪽 outline 그림자 텍스트 -->
-        <h1 class="absolute top-[20%] left-1/2 -translate-x-1/2 text-[60px] md:text-[140px] lg:text-[200px] font-black tracking-tighter leading-none whitespace-nowrap pointer-events-none select-none animate-reveal-top"
-            style="-webkit-text-stroke: 1px rgba(255,255,255,0.08); color: transparent; font-family: 'Pretendard', sans-serif;">
-          A.MAKERS
-        </h1>
+        <div class="relative flex flex-col items-center justify-center leading-none">
 
-        <!-- 메인 텍스트 (실선·흰색) -->
-        <h1 class="relative text-[64px] md:text-[140px] lg:text-[200px] font-black tracking-tighter leading-none text-white text-center z-10 whitespace-nowrap"
-            style="font-family: 'Pretendard', sans-serif;">
-          A.MAKERS
-        </h1>
+          <!-- 위쪽 outline 텍스트 (메인 글자 바로 위, 음수 마진으로 겹침) -->
+          <h1 class="text-[64px] md:text-[140px] lg:text-[200px] font-black tracking-tighter whitespace-nowrap pointer-events-none select-none animate-reveal-top"
+              style="-webkit-text-stroke: 1px rgba(255,255,255,0.18); color: transparent; font-family: 'Pretendard', sans-serif; margin-bottom: -0.15em;">
+            A.MAKERS
+          </h1>
 
-        <!-- 아래쪽 outline 그림자 텍스트 -->
-        <h1 class="absolute bottom-[20%] left-1/2 -translate-x-1/2 text-[60px] md:text-[140px] lg:text-[200px] font-black tracking-tighter leading-none whitespace-nowrap pointer-events-none select-none animate-reveal-bottom"
-            style="-webkit-text-stroke: 1px rgba(255,255,255,0.08); color: transparent; font-family: 'Pretendard', sans-serif;">
-          A.MAKERS
-        </h1>
+          <!-- 메인 텍스트 (실선·흰색) -->
+          <h1 class="relative text-[64px] md:text-[140px] lg:text-[200px] font-black tracking-tighter text-white text-center z-10 whitespace-nowrap"
+              style="font-family: 'Pretendard', sans-serif;">
+            A.MAKERS
+          </h1>
+
+          <!-- 아래쪽 outline 텍스트 (메인 글자 바로 아래, 음수 마진으로 겹침) -->
+          <h1 class="text-[64px] md:text-[140px] lg:text-[200px] font-black tracking-tighter whitespace-nowrap pointer-events-none select-none animate-reveal-bottom"
+              style="-webkit-text-stroke: 1px rgba(255,255,255,0.18); color: transparent; font-family: 'Pretendard', sans-serif; margin-top: -0.15em;">
+            A.MAKERS
+          </h1>
+
+        </div>
 
       </div>
 
