@@ -44,6 +44,17 @@
     };
   </script>
 
+  <!-- 히어로 타이포 사이즈 미디어쿼리 (모바일/데스크탑 분기) -->
+  <style>
+    .hero-typo-group { font-size: clamp(36px, 10vw, 200px); }
+    .hero-main      { font-size: clamp(36px, 10vw, 200px); }
+    .hero-outline   { font-size: clamp(32px, 8.5vw, 175px); }
+    @media (min-width: 640px) {
+      .hero-typo-group, .hero-main { font-size: clamp(42px, 12vw, 200px); }
+      .hero-outline                { font-size: clamp(38px, 10.5vw, 175px); }
+    }
+  </style>
+
   <!-- ================================ -->
   <!-- 트래킹 코드 (출시 시 키 박은 뒤 주석 해제) -->
   <!-- ================================ -->
@@ -108,56 +119,64 @@
     <section id="hero" class="relative bg-black overflow-hidden text-white" style="min-height: 100vh;">
 
       <!-- 상단 좌우 라벨 -->
-      <div class="absolute top-24 left-0 right-0 flex justify-between px-8 md:px-16 text-xs md:text-sm tracking-widest font-mono text-white/70 z-20">
+      <div class="absolute top-24 left-0 right-0 flex justify-between px-8 md:px-16 tracking-widest font-mono text-white/70 z-20"
+           style="font-size: clamp(10px, 0.9vw, 14px);">
         <span>2025</span>
         <span>20XX</span>
       </div>
 
       <!-- 상단 별·× 장식 -->
-      <div class="absolute top-32 left-1/3 text-white text-2xl z-10" aria-hidden="true">✦</div>
-      <div class="absolute top-32 left-1/2 text-white/80 text-xl z-10" aria-hidden="true">×</div>
-      <div class="absolute top-32 right-1/3 text-white text-2xl z-10" aria-hidden="true">✦</div>
+      <div class="absolute top-32 left-1/3 text-white z-10" aria-hidden="true"
+           style="font-size: clamp(18px, 1.8vw, 28px);">✦</div>
+      <div class="absolute top-32 left-1/2 text-white/80 z-10" aria-hidden="true"
+           style="font-size: clamp(16px, 1.5vw, 24px);">×</div>
+      <div class="absolute top-32 right-1/3 text-white z-10" aria-hidden="true"
+           style="font-size: clamp(18px, 1.8vw, 28px);">✦</div>
 
       <!-- 우측 × 마커 묶음 -->
-      <div class="absolute top-1/3 right-12 text-white/80 text-xl leading-tight z-10" aria-hidden="true">
+      <div class="absolute top-1/3 right-12 text-white/80 leading-tight z-10" aria-hidden="true"
+           style="font-size: clamp(16px, 1.5vw, 24px);">
         ×<br>×<br>×
       </div>
 
       <!-- 좌측 × 마커 묶음 -->
-      <div class="absolute bottom-1/3 left-12 text-white/80 text-xl leading-tight z-10" aria-hidden="true">
+      <div class="absolute bottom-1/3 left-12 text-white/80 leading-tight z-10" aria-hidden="true"
+           style="font-size: clamp(16px, 1.5vw, 24px);">
         ×<br>×<br>×
       </div>
 
       <!-- 중앙 거대 타이포 영역 -->
       <div class="relative flex items-center justify-center min-h-screen px-4">
 
-        <div class="relative flex flex-col items-center justify-center leading-none">
+        <div class="relative flex flex-col items-center justify-center leading-none hero-typo-group">
 
           <!-- 위쪽 outline 텍스트 (메인 글자 바로 위, 음수 마진으로 겹침) -->
-          <h1 class="text-[56px] md:text-[120px] lg:text-[180px] font-black tracking-tighter whitespace-nowrap pointer-events-none select-none animate-reveal-top"
+          <h1 class="font-black tracking-tighter whitespace-nowrap pointer-events-none select-none animate-reveal-top hero-outline"
               style="-webkit-text-stroke: 1px rgba(255,255,255,0.06); color: transparent; font-family: 'Pretendard', sans-serif; margin-bottom: -0.55em;">
             A.MAKERS
           </h1>
 
           <!-- 메인 텍스트 (실선·흰색) -->
-          <h1 class="relative text-[64px] md:text-[140px] lg:text-[200px] font-black tracking-tighter text-white text-center z-10 whitespace-nowrap"
+          <h1 class="relative font-black tracking-tighter text-white text-center z-10 whitespace-nowrap hero-main"
               style="font-family: 'Pretendard', sans-serif;">
             A.MAKERS
           </h1>
 
           <!-- 아래쪽 outline 텍스트 (메인 글자 바로 아래, 음수 마진으로 겹침) -->
-          <h1 class="text-[56px] md:text-[120px] lg:text-[180px] font-black tracking-tighter whitespace-nowrap pointer-events-none select-none animate-reveal-bottom"
+          <h1 class="font-black tracking-tighter whitespace-nowrap pointer-events-none select-none animate-reveal-bottom hero-outline"
               style="-webkit-text-stroke: 1px rgba(255,255,255,0.06); color: transparent; font-family: 'Pretendard', sans-serif; margin-top: -0.55em;">
             A.MAKERS
           </h1>
 
-          <!-- 한글/영문 카피 — 메인 글자 박스 바로 아래 absolute 레이어 -->
-          <div class="absolute left-1/2 z-20 text-center pointer-events-none -translate-x-1/2 -translate-y-1/2
-                      top-[calc(50%+42px)] md:top-[calc(50%+85px)] lg:top-[calc(50%+115px)]">
-            <p class="text-sm md:text-lg lg:text-xl text-white font-bold tracking-wide whitespace-nowrap mb-1 drop-shadow-lg">
+          <!-- 한글/영문 카피 — 메인 글자 박스 바로 아래 absolute 레이어 (em은 부모 상속 = 메인 사이즈) -->
+          <div class="absolute left-1/2 top-1/2 z-20 text-center pointer-events-none"
+               style="transform: translate(-50%, calc(-50% + 0.55em));">
+            <p class="font-bold tracking-wide whitespace-nowrap mb-1 drop-shadow-lg text-white"
+               style="font-size: clamp(12px, 1.5vw, 22px);">
               AI와 사업을 함께 만드는 5인의 빌더 그룹
             </p>
-            <p class="text-[10px] md:text-xs tracking-[0.3em] text-white/40 font-mono whitespace-nowrap">
+            <p class="tracking-[0.3em] text-white/40 font-mono whitespace-nowrap"
+               style="font-size: clamp(8px, 0.8vw, 14px);">
               FROM IDEA TO REAL BUSINESS
             </p>
           </div>
@@ -167,8 +186,10 @@
       </div>
 
       <!-- 하단 별·× 장식 -->
-      <div class="absolute bottom-32 left-1/3 text-white text-2xl z-10" aria-hidden="true">✦</div>
-      <div class="absolute bottom-32 right-1/3 text-white text-2xl z-10" aria-hidden="true">✦</div>
+      <div class="absolute bottom-32 left-1/3 text-white z-10" aria-hidden="true"
+           style="font-size: clamp(18px, 1.8vw, 28px);">✦</div>
+      <div class="absolute bottom-32 right-1/3 text-white z-10" aria-hidden="true"
+           style="font-size: clamp(18px, 1.8vw, 28px);">✦</div>
 
       <!-- 하단 중앙 Scroll Down 원형 + 5명 모집 카피 -->
       <div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-6">
@@ -188,10 +209,12 @@
 
         <!-- 5명 모집 카피 -->
         <div class="text-center">
-          <p class="text-lg md:text-2xl text-white font-bold mb-2">
+          <p class="text-white font-bold mb-2"
+             style="font-size: clamp(16px, 1.8vw, 28px);">
             왜 5명만 모집할까요?
           </p>
-          <p class="text-xs md:text-sm text-white/50">
+          <p class="text-white/50"
+             style="font-size: clamp(10px, 0.9vw, 14px);">
             A.MAKERS만의 철학과 기준을 확인해보세요
           </p>
         </div>
