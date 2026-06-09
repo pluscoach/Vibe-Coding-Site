@@ -24,13 +24,13 @@
           fontFamily: {
             sans: ['Pretendard Variable', 'Pretendard', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
           },
+          animation: {
+            'spin-slow': 'spin 8s linear infinite',
+          },
         },
       },
     };
   </script>
-
-  <!-- Spline 3D viewer (CDN, 빌드 없음) -->
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.97/build/spline-viewer.js"></script>
 
   <!-- ================================ -->
   <!-- 트래킹 코드 (출시 시 키 박은 뒤 주석 해제) -->
@@ -93,46 +93,81 @@
   <main>
 
     <!-- [1] 히어로 -->
-    <section id="hero" class="relative bg-black overflow-hidden" style="height: 100vh; min-height: 700px;">
+    <section id="hero" class="relative bg-black overflow-hidden text-white" style="min-height: 100vh;">
 
-      <!-- Spline 3D 배경 -->
-      <div class="absolute inset-0 w-full h-full">
-        <spline-viewer url="https://prod.spline.design/8MAFsUmSumAt3DSq/scene.splinecode"
-                       style="width: 100%; height: 100%;"></spline-viewer>
+      <!-- 상단 좌우 라벨 -->
+      <div class="absolute top-24 left-0 right-0 flex justify-between px-8 md:px-16 text-xs md:text-sm tracking-widest font-mono text-white/70 z-20">
+        <span>2025</span>
+        <span>20XX</span>
       </div>
 
-      <!-- 텍스트 오버레이 (Spline 위에 겹쳐서) -->
-      <div class="relative z-10 flex flex-col items-center justify-center h-full pointer-events-none">
+      <!-- 상단 별·× 장식 -->
+      <div class="absolute top-32 left-1/3 text-white text-2xl z-10" aria-hidden="true">✦</div>
+      <div class="absolute top-32 left-1/2 text-white/80 text-xl z-10" aria-hidden="true">×</div>
+      <div class="absolute top-32 right-1/3 text-white text-2xl z-10" aria-hidden="true">✦</div>
 
-        <!-- 상단 라벨 -->
-        <div class="absolute top-24 left-0 right-0 flex justify-between px-8 md:px-16 text-xs md:text-sm text-white/60 font-mono tracking-widest">
-          <span>2025</span>
-          <span>4 WEEKS</span>
-        </div>
+      <!-- 우측 × 마커 묶음 -->
+      <div class="absolute top-1/3 right-12 text-white/80 text-xl leading-tight z-10" aria-hidden="true">
+        ×<br>×<br>×
+      </div>
 
-        <!-- 메인 타이포 -->
-        <h1 class="text-[64px] md:text-[120px] lg:text-[160px] font-black tracking-tighter text-white leading-none text-center">
+      <!-- 좌측 × 마커 묶음 -->
+      <div class="absolute bottom-1/3 left-12 text-white/80 text-xl leading-tight z-10" aria-hidden="true">
+        ×<br>×<br>×
+      </div>
+
+      <!-- 중앙 거대 타이포 영역 -->
+      <div class="relative flex items-center justify-center min-h-screen px-4">
+
+        <!-- 위쪽 outline 그림자 텍스트 -->
+        <h1 class="absolute top-[20%] left-1/2 -translate-x-1/2 text-[60px] md:text-[140px] lg:text-[200px] font-black tracking-tighter leading-none whitespace-nowrap pointer-events-none select-none"
+            style="-webkit-text-stroke: 1px rgba(255,255,255,0.15); color: transparent; font-family: 'Pretendard', sans-serif;">
           A.MAKERS
         </h1>
 
-        <!-- 하단 라벨 + CTA -->
-        <div class="absolute bottom-24 left-0 right-0 flex flex-col items-center gap-6 pointer-events-auto">
-          <div class="flex gap-12 md:gap-24 text-xs md:text-sm text-white/60 font-mono tracking-widest">
-            <div class="text-center">
-              <div class="text-white/40 mb-1">FROM</div>
-              <div>IDEA</div>
-            </div>
-            <div class="text-center">
-              <div class="text-white/40 mb-1">TO</div>
-              <div>LAUNCH</div>
-            </div>
-          </div>
+        <!-- 메인 텍스트 (실선·흰색) -->
+        <h1 class="relative text-[64px] md:text-[140px] lg:text-[200px] font-black tracking-tighter leading-none text-white text-center z-10 whitespace-nowrap"
+            style="font-family: 'Pretendard', sans-serif;">
+          A.MAKERS
+        </h1>
 
-          <a href="#final-cta" class="inline-block px-8 py-4 text-base font-semibold text-black bg-white hover:bg-white/90 transition rounded-none">
-            1기 무료 상담 신청 →
-          </a>
+        <!-- 아래쪽 outline 그림자 텍스트 -->
+        <h1 class="absolute bottom-[20%] left-1/2 -translate-x-1/2 text-[60px] md:text-[140px] lg:text-[200px] font-black tracking-tighter leading-none whitespace-nowrap pointer-events-none select-none"
+            style="-webkit-text-stroke: 1px rgba(255,255,255,0.15); color: transparent; font-family: 'Pretendard', sans-serif;">
+          A.MAKERS
+        </h1>
+
+      </div>
+
+      <!-- 하단 별·× 장식 -->
+      <div class="absolute bottom-32 left-1/3 text-white text-2xl z-10" aria-hidden="true">✦</div>
+      <div class="absolute bottom-32 right-1/3 text-white text-2xl z-10" aria-hidden="true">✦</div>
+
+      <!-- 하단 중앙 Scroll Down 원형 표시 -->
+      <div class="absolute bottom-20 left-1/2 -translate-x-1/2 z-20">
+        <div class="relative w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
+          <svg class="absolute inset-0 w-full h-full animate-spin-slow" viewBox="0 0 100 100" aria-hidden="true">
+            <defs>
+              <path id="circle-text" d="M 50,50 m -36,0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0"></path>
+            </defs>
+            <text class="fill-white/70 text-[10px] tracking-widest" style="font-family: monospace;">
+              <textPath href="#circle-text">SCROLL DOWN • SCROLL DOWN • </textPath>
+            </text>
+          </svg>
+          <span class="text-white text-xl" aria-hidden="true">↓</span>
         </div>
+      </div>
 
+      <!-- 하단 좌우 라벨 -->
+      <div class="absolute bottom-12 left-0 right-0 flex justify-between px-8 md:px-16 text-xs md:text-sm tracking-widest font-mono z-20">
+        <div>
+          <div class="text-white/40 mb-1">FROM</div>
+          <div class="text-white">IDEA</div>
+        </div>
+        <div class="text-right">
+          <div class="text-white/40 mb-1">TO</div>
+          <div class="text-white">LAUNCH</div>
+        </div>
       </div>
 
     </section>
